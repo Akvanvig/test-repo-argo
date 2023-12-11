@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: header-response
+  labels:
+    app: header-response-server
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: header-response-server
+  template:
+    metadata:
+      labels:
+        app: header-response-server
+    spec:
+      containers:
+      - name: header-response
+        image: ghcr.io/akvanvig/header-response:v1.0.0
+        ports:
+        - containerPort: 8080

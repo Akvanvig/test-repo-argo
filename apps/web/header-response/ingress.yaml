@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: header-response
+  labels:
+    app: header-response-server
+spec:
+  rules:
+  - host: "CHANGE-ME"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: header-response
+            port:
+              number: 8080
